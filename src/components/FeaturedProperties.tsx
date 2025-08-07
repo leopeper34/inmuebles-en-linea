@@ -22,7 +22,7 @@ const FeaturedProperties = () => {
             Propiedades Destacadas
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Descubre nuestra selección de propiedades premium en las mejores ubicaciones
+            Descubre nuestra selección de propiedades en las mejores ubicaciones
           </p>
         </div>
 

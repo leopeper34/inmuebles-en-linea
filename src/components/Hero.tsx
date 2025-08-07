@@ -37,7 +37,7 @@ const Hero = () => {
             <span className="text-luxury-gold block">Aguascalientes</span>
           </h1>
           <p className="text-xl text-white/90 mb-8">
-            Propiedades exclusivas en Aguascalientes, AGS. Experimenta el lujo y la comodidad que mereces en la ciudad más bella de México.
+            Propiedades en venta dentro de la ciudad de Aguascalientes, AGS. Experimenta el bienestar y la comodidad que mereces en la ciudad más bella de México.
           </p>
 
           {/* Search Form */}
@@ -87,7 +87,7 @@ const Hero = () => {
           {/* Stats */}
           <div className="grid grid-cols-3 gap-6 mt-12">
             <div className="text-center">
-              <div className="text-3xl font-bold text-luxury-gold">500+</div>
+              <div className="text-3xl font-bold text-luxury-gold">∞</div>
               <div className="text-white/80">Propiedades</div>
             </div>
             <div className="text-center">
@@ -95,7 +95,7 @@ const Hero = () => {
               <div className="text-white/80">Años de experiencia</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-luxury-gold">1000+</div>
+              <div className="text-3xl font-bold text-luxury-gold">29+</div>
               <div className="text-white/80">Clientes satisfechos</div>
             </div>
           </div>

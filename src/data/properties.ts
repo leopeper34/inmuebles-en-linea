@@ -1,10 +1,11 @@
+import paola from '../assets/paola.jpg';
+
 
 const images = import.meta.glob('../assets/CB/*.jpg', {
   eager: true,
   import: 'default',
 }) as Record<string, string>
 const imageList = Object.values(images)
-
 
 export interface Property {
   id: string;
@@ -14,6 +15,7 @@ export interface Property {
   bedrooms: number;
   bathrooms: number;
   area: number;
+  constructionArea: number;
   type: 'Casa' | 'Departamento' | 'Villa';
   image: string;
   images: string[];
@@ -23,6 +25,7 @@ export interface Property {
     name: string;
     phone: string;
     email: string;
+    image: string;
   };
 }
 
@@ -35,6 +38,7 @@ export const properties: Property[] = [
     bedrooms: 4,
     bathrooms: 3,
     area: 350,
+    constructionArea: 280,
     type: 'Villa',
     image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop',
     images: [
@@ -45,9 +49,10 @@ export const properties: Property[] = [
     description: 'Espectacular villa moderna con acabados de lujo en la exclusiva zona Campestre de Aguascalientes. Cuenta con amplios espacios, jardín privado, alberca y todas las comodidades para una vida de lujo.',
     features: ['Jardín privado', 'Alberca', 'Garaje para 3 autos', 'Sistema de seguridad', 'Aire acondicionado', 'Cocina gourmet', 'Cuarto de servicio'],
     agent: {
-      name: 'María Elena González',
-      phone: '+52 449 123 4567',
-      email: 'maria@inmoluxags.com'
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
     }
   },
   {
@@ -58,6 +63,7 @@ export const properties: Property[] = [
     bedrooms: 2,
     bathrooms: 2,
     area: 120,
+    constructionArea: 105,
     type: 'Departamento',
     image: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop',
     images: [
@@ -68,9 +74,10 @@ export const properties: Property[] = [
     description: 'Elegante departamento en el corazón del Centro Histórico de Aguascalientes. Diseño contemporáneo con acabados de primera calidad y vista a la Catedral. Perfecta ubicación para disfrutar de la cultura y gastronomía local.',
     features: ['Vista al Centro Histórico', 'Balcón francés', 'Cocina integral', 'Amenidades del edificio', 'Estacionamiento techado', 'Seguridad 24/7'],
     agent: {
-      name: 'Carlos Alberto Rodríguez',
-      phone: '+52 449 987 6543',
-      email: 'carlos@inmoluxags.com'
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
     }
   },
   {
@@ -81,6 +88,7 @@ export const properties: Property[] = [
     bedrooms: 3,
     bathrooms: 2,
     area: 250,
+    constructionArea: 210,   
     type: 'Casa',
     image: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop',
     images: [
@@ -91,9 +99,10 @@ export const properties: Property[] = [
     description: 'Hermosa casa colonial completamente renovada en el tradicional Barrio San Marcos, conservando su encanto original con todas las comodidades modernas. Ubicada a pasos de la famosa Feria de San Marcos.',
     features: ['Arquitectura colonial', 'Patio central', 'Chimenea', 'Techos altos', 'Cerca de la Feria de San Marcos', 'Pisos de cantera', 'Estacionamiento'],
     agent: {
-      name: 'Ana Patricia Martínez',
-      phone: '+52 449 555 0123',
-      email: 'ana@inmoluxags.com'
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
     }
   },
   {
@@ -104,6 +113,7 @@ export const properties: Property[] = [
     bedrooms: 4,
     bathrooms: 4,
     area: 380,
+    constructionArea: 320,
     type: 'Villa',
     image: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop',
     images: [
@@ -114,9 +124,10 @@ export const properties: Property[] = [
     description: 'Exclusiva villa contemporánea en el prestigioso fraccionamiento Las Américas. Diseño de vanguardia con espacios abiertos, tecnología domótica y acabados de la más alta calidad.',
     features: ['Domótica completa', 'Alberca infinity', 'Cocina premium', 'Vestidor principal', 'Área de BBQ', 'Gym privado', 'Oficina en casa'],
     agent: {
-      name: 'Roberto Silva Hernández',
-      phone: '+52 449 876 5432',
-      email: 'roberto@inmoluxags.com'
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
     }
   },
   {
@@ -127,6 +138,7 @@ export const properties: Property[] = [
     bedrooms: 3,
     bathrooms: 2,
     area: 220,
+    constructionArea: 180,
     type: 'Casa',
     image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
     images: [
@@ -137,32 +149,31 @@ export const properties: Property[] = [
     description: 'Moderna casa en privada con seguridad 24/7 en Bosques del Prado. Excelente ubicación cerca de centros comerciales, escuelas privadas y hospitales. Ideal para familias.',
     features: ['Seguridad 24/7', 'Áreas verdes comunes', 'Jardín privado', 'Estacionamiento doble', 'Cerca de Plaza Vestir', 'Casa club', 'Alberca comunitaria'],
     agent: {
-      name: 'Laura Sofía Hernández',
-      phone: '+52 449 234 5678',
-      email: 'laura@inmoluxags.com'
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
     }
   },
-  
-{
-  id: '6',
+  {
+    id: '6',
   title: 'Casa en Reserva Bosque Sereno',
   price: 2360000,
   location: 'Avenida Reserva Bosque Sereno 103 Reserva Bosque Sereno, 20326 Aguascalientes, Ags.',
   bedrooms: 3,
   bathrooms: 3,
-  area: 140.5,
+  area: 120,
+  constructionArea: 140.5,
   type: 'Casa',
-  image: imageList[0], 
+  image: imageList[0],
   images: imageList.slice(0, 13),
-  description: 'Casa moderna de dos plantas en residencial privado con seguridad. Cuenta con 3 recámaras, 2.5 baños, cocina integral , patio trasero y zona de lavado. Ideal para familias jóvenes.',
-  features: ['Casa moderna', 'Estacionamiento 2 vehiculos', 'Seguridad 24/7', 'Alberca comunitaria climatizada', 'Asadores', 'Juegos infantiles', 'Áreas verdes', 'Salon de eventos'],
-  agent: {
-    name: 'Luis Martin Zamarripa',
-    phone: '+52 449 537 1611',
-    email: 'luiz977@gmail.com'
+  description: 'Te presento una propiedad que realmente destaca por su funcionalidad y comodidad. Esta casa es perfecta para quienes buscan un espacio acogedor y práctico.',
+  features: ['Dos pisos', 'Estacionamiento 2 vehiculos', '3 Recamaras', '2/50 Baños', 'Patio', 'Zona lavado', 'Áreas verdes', 'Salon de eventos', 'Alberca climatizada', 'coto cerrado'],
+    agent: {
+      name: 'Joana Paola Ramirez',
+      phone: '+52 449 218 7657',
+      email: 'Joanaimobiliaria@gmail.com',
+      image: paola
+    }
   }
-}
-
-    
-  
 ];

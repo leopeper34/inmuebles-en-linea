@@ -6,11 +6,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { properties } from '@/data/properties';
-import { ScheduleVisitDialog } from '@/components/ScheduleVisitDialog';
+
 import { useToast } from '@/hooks/use-toast';
 import { 
   Bed, Bath, Square, MapPin, Phone, Mail, ArrowLeft, 
-  ChevronLeft, ChevronRight, Check, Heart, Share2, Calendar
+  ChevronLeft, ChevronRight, Check, Heart, Share2, Calendar, Home
 } from 'lucide-react';
 
 const PropertyDetail = () => {
@@ -182,7 +182,14 @@ const PropertyDetail = () => {
                     <CardTitle className="text-xl sm:text-2xl mb-2 pr-4">{property.title}</CardTitle>
                     <div className="flex items-center text-muted-foreground mb-3 sm:mb-4">
                       <MapPin className="h-4 w-4 mr-1 flex-shrink-0" />
-                      <span className="text-sm sm:text-base">{property.location}</span>
+                      <a 
+                        href={`https://maps.google.com/maps?q=${encodeURIComponent(property.location)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm sm:text-base hover:text-primary transition-colors cursor-pointer underline"
+                      >
+                        {property.location}
+                      </a>
                     </div>
                     <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-muted-foreground mb-3 sm:mb-4">
                       {property.bedrooms > 0 && (
@@ -197,7 +204,11 @@ const PropertyDetail = () => {
                       </div>
                       <div className="flex items-center">
                         <Square className="h-4 w-4 mr-1" />
-                        <span className="text-sm sm:text-base">{property.area}m²</span>
+                        <span className="text-sm sm:text-base">{property.area}m² terreno</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Home className="h-4 w-4 mr-1" />
+                        <span className="text-sm sm:text-base">{property.constructionArea}m² construcción</span>
                       </div>
                     </div>
                   </div>
@@ -259,10 +270,12 @@ const PropertyDetail = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="text-center">
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 bg-gradient-luxury rounded-full mx-auto mb-3 flex items-center justify-center">
-                    <span className="text-xl sm:text-2xl font-bold text-navy-deep">
-                      {property.agent.name.charAt(0)}
-                    </span>
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 mx-auto mb-3">
+                    <img
+                      src={property.agent.image}
+                      alt={property.agent.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
                   </div>
                   <h3 className="font-semibold text-base sm:text-lg">{property.agent.name}</h3>
                   <p className="text-muted-foreground text-sm">Agente Inmobiliario</p>
@@ -282,7 +295,7 @@ const PropertyDetail = () => {
                     asChild
                   >
                     <a 
-                      href={`https://wa.me/4495371611?text=Hola, me interesa esta propiedad: ${encodeURIComponent(property.title)} ubicada en ${encodeURIComponent(property.location)}. ¿Me puede dar más informes?`}
+                      href={`https://wa.me/4492187657?text=Hola, me interesa esta propiedad: ${encodeURIComponent(property.title)} ubicada en ${encodeURIComponent(property.location)}. ¿Me puede dar más informes?`}
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -313,15 +326,20 @@ const PropertyDetail = () => {
                 </div>
 
                 <div className="border-t pt-4">
-                  <ScheduleVisitDialog 
-                    propertyTitle={property.title}
-                    agentName={property.agent.name}
+                  <Button 
+                    variant="luxury" 
+                    className="w-full text-sm sm:text-base"
+                    asChild
                   >
-                    <Button variant="luxury" className="w-full text-sm sm:text-base">
+                    <a 
+                      href={`https://wa.me/4492187657?text=Buenos días, me gustaría agendar una visita para la propiedad "${encodeURIComponent(property.title)}" ubicada en ${encodeURIComponent(property.location)}. ¿Cuándo podríamos coordinar? Gracias.`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       <Calendar className="h-4 w-4 mr-2" />
                       Agendar visita
-                    </Button>
-                  </ScheduleVisitDialog>
+                    </a>
+                  </Button>
                 </div>
               </CardContent>
             </Card>

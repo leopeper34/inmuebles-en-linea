@@ -31,7 +31,8 @@ const Services = () => {
     {
       icon: Users,
       title: 'Atención Personalizada',
-      description: 'Un agente dedicado para cada cliente con atención 24/7.'
+      description: 'Recibe atención inmediata y de calidad. Nos importa ofrecerte el mejor servicio.'
+
     }
   ];
 

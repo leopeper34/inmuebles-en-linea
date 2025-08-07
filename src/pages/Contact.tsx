@@ -1,75 +1,33 @@
-import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useToast } from '@/hooks/use-toast';
+import { Card, CardContent } from '@/components/ui/card';
 import { 
-  Phone, Mail, MapPin, Clock, Send, MessageSquare, 
+  Phone, Mail, MapPin, 
   Facebook, Instagram, Twitter, Linkedin 
 } from 'lucide-react';
 import InteractiveMap from '@/components/InteractiveMap';
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: ''
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    // Simulación de envío de formulario
-    toast({
-      title: "Mensaje enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    
-    // Limpiar formulario
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
-  };
-
-  const handleInputChange = (field: string, value: string) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
-  };
-
   const contactInfo = [
     {
       icon: Phone,
-      title: 'Teléfono',
-      details: ['+52 4495371611', '+52 4492675079'],
-      action: 'tel:+5244955371611'
+      title: 'Llamar',
+      number1: '449 267 5079',
+      number2: '449 218 7657',
+      action1: 'tel:+524492675079',
+      action2: 'tel:+524492187657'
     },
     {
       icon: Mail,
       title: 'Email',
-      details: ['contacto@inmolux.com', 'ventas@inmolux.com'],
-      action: 'mailto:contacto@inmolux.com'
+      email: 'contacto@inmolux.com',
+      action: 'mailto:contacto@inmolux.com?subject=Necesito ayuda para vender mi casa'
     },
     {
       icon: MapPin,
-      title: 'Dirección',
-      details: ['Montes Himalaya 905', 'Jardines de la Concepción II, Aguascalientes'],
-      action: ''
-    },
-    {
-      icon: Clock,
-      title: 'Horarios',
-      details: ['Lun - Vie: 9:00 - 18:00', 'Sáb: 9:00 - 14:00'],
-      action: ''
+      title: 'Ubicación',
+      address: 'Montes Himalaya 905, Jardines de la Concepción II, Aguascalientes',
+      action: 'https://maps.google.com/?q=Montes+Himalaya+905,+Jardines+de+la+Concepción+II,+Aguascalientes'
     }
   ];
 
@@ -101,158 +59,99 @@ const Contact = () => {
 
       {/* Contact Section */}
       <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             
-            {/* Contact Form */}
-            <div className="lg:col-span-2">
-              <Card className="shadow-luxury border-none">
-                <CardHeader>
-                  <CardTitle className="text-2xl text-primary flex items-center">
-                    <MessageSquare className="h-6 w-6 mr-2" />
-                    Envíanos un mensaje
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Nombre completo *
-                        </label>
-                        <Input
-                          required
-                          value={formData.name}
-                          onChange={(e) => handleInputChange('name', e.target.value)}
-                          placeholder="Tu nombre completo"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-foreground mb-2">
-                          Teléfono
-                        </label>
-                        <Input
-                          value={formData.phone}
-                          onChange={(e) => handleInputChange('phone', e.target.value)}
-                          placeholder="Tu número de teléfono"
-                        />
-                      </div>
-                    </div>
+            {/* Teléfonos */}
+            <Card className="group hover:shadow-hover-custom transition-all duration-300 bg-gradient-card border-none">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Phone className="h-8 w-8 text-navy-deep" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-4 text-lg">Llamar</h3>
+                <div className="space-y-3">
+                  <a 
+                    href="tel:+524492675079" 
+                    className="block text-primary hover:text-primary/80 transition-colors font-medium text-lg"
+                  >
+                    449 267 5079
+                  </a>
+                  <a 
+                    href="tel:+524492187657" 
+                    className="block text-primary hover:text-primary/80 transition-colors font-medium text-lg"
+                  >
+                    449 218 7657
+                  </a>
+                </div>
+              </CardContent>
+            </Card>
 
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Email *
-                      </label>
-                      <Input
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={(e) => handleInputChange('email', e.target.value)}
-                        placeholder="tu@email.com"
-                      />
-                    </div>
+            {/* Email */}
+            <Card className="group hover:shadow-hover-custom transition-all duration-300 bg-gradient-card border-none">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <Mail className="h-8 w-8 text-navy-deep" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-4 text-lg">Email</h3>
+                <a 
+                  href="mailto:contacto@inmolux.com?subject=Necesito ayuda para vender mi casa&body=Hola, me gustaría recibir información sobre cómo vender mi casa. Espero su respuesta." 
+                  className="text-primary hover:text-primary/80 transition-colors font-medium text-lg"
+                >
+                  contacto@inmolux.com
+                </a>
+              </CardContent>
+            </Card>
 
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Asunto
-                      </label>
-                      <Select onValueChange={(value) => handleInputChange('subject', value)}>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Selecciona un asunto" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="compra">Quiero comprar una propiedad</SelectItem>
-                          <SelectItem value="venta">Quiero vender mi propiedad</SelectItem>
-                          <SelectItem value="inversion">Inversión inmobiliaria</SelectItem>
-                          <SelectItem value="asesoria">Asesoría general</SelectItem>
-                          <SelectItem value="otro">Otro</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
+            {/* Ubicación */}
+            <Card className="group hover:shadow-hover-custom transition-all duration-300 bg-gradient-card border-none md:col-span-2 lg:col-span-1">
+              <CardContent className="p-8 text-center">
+                <div className="w-16 h-16 bg-gradient-luxury rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <MapPin className="h-8 w-8 text-navy-deep" />
+                </div>
+                <h3 className="font-semibold text-foreground mb-4 text-lg">Ubicación</h3>
+                <a 
+                  href="https://maps.google.com/?q=Montes+Himalaya+905,+Jardines+de+la+Concepción+II,+Aguascalientes" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary hover:text-primary/80 transition-colors font-medium"
+                >
+                  Montes Himalaya 905<br/>
+                  Jardines de la Concepción II<br/>
+                  Aguascalientes
+                </a>
+              </CardContent>
+            </Card>
+          </div>
 
-                    <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">
-                        Mensaje *
-                      </label>
-                      <Textarea
-                        required
-                        rows={5}
-                        value={formData.message}
-                        onChange={(e) => handleInputChange('message', e.target.value)}
-                        placeholder="Cuéntanos en qué podemos ayudarte..."
-                      />
-                    </div>
+          {/* Mapa y redes sociales */}
+          <div className="mt-12 grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Interactive Map */}
+            <Card className="bg-gradient-card border-none">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-foreground mb-4 text-center">Encuéntranos</h3>
+                <InteractiveMap />
+              </CardContent>
+            </Card>
 
-                    <Button type="submit" variant="hero" size="lg" className="w-full">
-                      <Send className="h-5 w-5 mr-2" />
-                      Enviar mensaje
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Contact Info */}
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <Card key={index} className="group hover:shadow-hover-custom transition-all duration-300 bg-gradient-card border-none">
-                  <CardContent className="p-6">
-                    <div className="flex items-start space-x-4">
-                      <div className="w-12 h-12 bg-gradient-luxury rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <info.icon className="h-6 w-6 text-navy-deep" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-foreground mb-2">{info.title}</h3>
-                        {info.details.map((detail, idx) => (
-                          <p key={idx} className="text-muted-foreground text-sm">
-                            {info.action && idx === 0 ? (
-                              <a href={info.action} className="hover:text-primary transition-colors">
-                                {detail}
-                              </a>
-                            ) : (
-                              detail
-                            )}
-                          </p>
-                        ))}
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
-
-              {/* Social Media */}
-              <Card className="bg-gradient-card border-none">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-4">Síguenos</h3>
-                  <div className="flex space-x-4">
-                    {socialLinks.map((social, index) => (
-                      <a
-                        key={index}
-                        href={social.href}
-                        className="w-10 h-10 bg-muted rounded-full flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors"
-                        aria-label={social.label}
-                      >
-                        <social.icon className="h-5 w-5" />
-                      </a>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Interactive Map */}
-              <Card className="bg-gradient-card border-none">
-                <CardContent className="p-6">
-                  <h3 className="font-semibold text-foreground mb-4">Ubicación</h3>
-                  <InteractiveMap />
-                  <div className="mt-3 text-center">
-                    <p className="text-xs text-muted-foreground">
-                      Montes Himalaya 905, Jardines de la Concepción II<br/>
-                      20120 Aguascalientes, Ags.
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
+            {/* Social Media */}
+            <Card className="bg-gradient-card border-none">
+              <CardContent className="p-6 flex flex-col justify-center">
+                <h3 className="font-semibold text-foreground mb-6 text-center">Síguenos en redes</h3>
+                <div className="grid grid-cols-2 gap-4">
+                  {socialLinks.map((social, index) => (
+                    <a
+                      key={index}
+                      href={social.href}
+                      className="flex items-center justify-center h-12 bg-muted rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors group"
+                      aria-label={social.label}
+                    >
+                      <social.icon className="h-6 w-6 mr-2" />
+                      <span className="font-medium">{social.label}</span>
+                    </a>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

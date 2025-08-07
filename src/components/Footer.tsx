@@ -13,7 +13,7 @@ const Footer = () => {
               <span className="font-bold text-2xl">InmoLux</span>
             </div>
             <p className="text-white/80 mb-4">
-              Tu aliado en bienes raíces de lujo. Más de 15 años conectando familias con sus hogares perfectos.
+              Tu aliado en bienes raíces. Más de 15 años conectando familias con sus hogares perfectos.
             </p>
             <div className="flex space-x-4">
               <Facebook className="h-5 w-5 hover:text-luxury-gold cursor-pointer transition-colors" />
@@ -51,11 +51,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-luxury-gold" />
-                <span className="text-white/80">+52 4495371611</span>
+                <span className="text-white/80">+52 449 537 16 11</span>
               </div>
               <div className="flex items-center">
                 <Phone className="h-5 w-5 mr-3 text-luxury-gold" />
-                <span className="text-white/80">+52 4492675079</span>
+                <span className="text-white/80">+52 449 267 50 79</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 mr-3 text-luxury-gold" />

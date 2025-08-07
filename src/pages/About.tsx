@@ -3,40 +3,34 @@ import Footer from '@/components/Footer';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Users, Award, MapPin, TrendingUp } from 'lucide-react';
+import luis from '../assets/luis.jpg'
+import paola from '../assets/paola.jpg';
 
 const About = () => {
   const stats = [
-    { icon: Users, label: 'Clientes Satisfechos', value: '1,000+' },
+    { icon: Users, label: 'Clientes Satisfechos', value: '200+' },
     { icon: Award, label: 'Años de Experiencia', value: '15+' },
-    { icon: MapPin, label: 'Ciudades', value: '20+' },
-    { icon: TrendingUp, label: 'Propiedades Vendidas', value: '2,500+' }
+    { icon: MapPin, label: 'Ubicaciones', value: '20+' },
+    { icon: TrendingUp, label: 'Propiedades Vendidas', value: '∞' }
   ];
 
   const team = [
+
     {
-      name: 'María González',
-      position: 'Directora General',
-      experience: '15 años de experiencia',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b5c5?w=300&h=300&fit=crop&crop=face'
-    },
-    {
-      name: 'Carlos Rodríguez',
+      name: 'Luis Zamarripa',
       position: 'Agente Senior',
-      experience: '12 años de experiencia',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=face'
+      experience: '5 años de experiencia',
+      image: luis,
     },
     {
-      name: 'Ana Martínez',
-      position: 'Especialista en Lujo',
-      experience: '10 años de experiencia',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=face'
+      name: 'Paola Ramirez',
+      position: 'Agente de calidad',
+      experience: '15 años de experiencia',
+      image: paola,
     },
-    {
-      name: 'Roberto Silva',
-      position: 'Asesor Legal',
-      experience: '18 años de experiencia',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=face'
-    }
+    
+
+    
   ];
 
   return (
@@ -51,7 +45,7 @@ const About = () => {
               Sobre InmoLux
             </h1>
             <p className="text-xl text-white/90 max-w-3xl mx-auto">
-              Somos líderes en el mercado inmobiliario de lujo con más de 15 años de experiencia 
+              Somos líderes en el mercado inmobiliario con más de 15 años de experiencia 
               conectando familias con sus hogares perfectos.
             </p>
           </div>

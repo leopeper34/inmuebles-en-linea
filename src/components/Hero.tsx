@@ -1,20 +1,40 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Search, MapPin, Home } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/hero-real-estate.jpg';
+import { properties } from '@/data/properties';
 
 const Hero = () => {
+  const navigate = useNavigate();
   const [searchData, setSearchData] = useState({
     location: '',
     type: '',
     priceRange: ''
   });
 
+  // Extraer ubicaciones únicas de las propiedades
+  const uniqueLocations = [...new Set(properties.map(property => 
+    property.location.split(',')[0].trim() // Tomar solo la primera parte antes de la coma
+  ))];
+
   const handleSearch = () => {
-    // Lógica de búsqueda - redirigir a propiedades con filtros
-    console.log('Búsqueda:', searchData);
+    // Construir parámetros de búsqueda
+    const searchParams = new URLSearchParams();
+    
+    if (searchData.location && searchData.location !== 'all') {
+      searchParams.set('location', searchData.location);
+    }
+    if (searchData.type && searchData.type !== 'all') {
+      searchParams.set('type', searchData.type);
+    }
+    if (searchData.priceRange && searchData.priceRange !== 'all') {
+      searchParams.set('priceRange', searchData.priceRange);
+    }
+    
+    // Navegar a la página de propiedades con los filtros
+    navigate(`/propiedades?${searchParams.toString()}`);
   };
 
   return (
@@ -37,21 +57,26 @@ const Hero = () => {
             <span className="text-luxury-gold block">Aguascalientes</span>
           </h1>
           <p className="text-xl text-white/90 mb-8">
-            Propiedades en venta dentro de la ciudad de Aguascalientes, AGS. Experimenta el bienestar y la comodidad que mereces en la ciudad más bella de México.
+            Propiedades exclusivas en Aguascalientes, AGS. Experimenta la comodidad que mereces en la ciudad más bella de México.
           </p>
 
           {/* Search Form */}
           <div className="bg-white/95 backdrop-blur-sm rounded-lg p-6 shadow-luxury">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-              <div className="relative">
-                <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <Input
-                  placeholder="Zona de Aguascalientes"
-                  value={searchData.location}
-                  onChange={(e) => setSearchData({...searchData, location: e.target.value})}
-                  className="pl-10"
-                />
-              </div>
+              <Select onValueChange={(value) => setSearchData({...searchData, location: value})}>
+                <SelectTrigger>
+                  <MapPin className="h-4 w-4 mr-2" />
+                  <SelectValue placeholder="Zona de Aguascalientes" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all">Todas las zonas</SelectItem>
+                  {uniqueLocations.map((location) => (
+                    <SelectItem key={location} value={location}>
+                      {location}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
               
               <Select onValueChange={(value) => setSearchData({...searchData, type: value})}>
                 <SelectTrigger>

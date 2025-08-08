@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import PropertyCard from '@/components/PropertyCard';
@@ -10,10 +11,28 @@ import { properties } from '@/data/properties';
 import { Search, Filter, SlidersHorizontal } from 'lucide-react';
 
 const Properties = () => {
+  const [searchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedType, setSelectedType] = useState('all');
   const [priceRange, setPriceRange] = useState('all');
   const [sortBy, setSortBy] = useState('newest');
+
+  // Inicializar filtros desde los parámetros de URL
+  useEffect(() => {
+    const locationParam = searchParams.get('location');
+    const typeParam = searchParams.get('type');
+    const priceParam = searchParams.get('priceRange');
+
+    if (locationParam) {
+      setSearchTerm(locationParam);
+    }
+    if (typeParam) {
+      setSelectedType(typeParam);
+    }
+    if (priceParam) {
+      setPriceRange(priceParam);
+    }
+  }, [searchParams]);
 
   const filteredProperties = properties.filter(property => {
     const matchesSearch = property.title.toLowerCase().includes(searchTerm.toLowerCase()) ||

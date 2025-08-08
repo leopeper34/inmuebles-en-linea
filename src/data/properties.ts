@@ -1,11 +1,18 @@
 import paola from '../assets/paola.jpg';
 
 
-const images = import.meta.glob('../assets/CB/*.jpg', {
+const allImages = import.meta.glob('../assets/propiedades/**/*.jpg', {
   eager: true,
   import: 'default',
 }) as Record<string, string>
-const imageList = Object.values(images)
+
+// 2️⃣ Función para obtener imágenes por carpeta
+function getImagesByFolder(folder: string) {
+  return Object.entries(allImages)
+    .filter(([path]) => path.includes(`/${folder}/`)) // Solo imágenes de esa carpeta
+    .map(([, src]) => src)
+}
+
 
 export interface Property {
   id: string;
@@ -14,6 +21,7 @@ export interface Property {
   location: string;
   bedrooms: number;
   bathrooms: number;
+  vehicles: number;
   area: number;
   constructionArea: number;
   type: 'Casa' | 'Departamento' | 'Villa';
@@ -32,22 +40,19 @@ export interface Property {
 export const properties: Property[] = [
   {
     id: '1',
-    title: 'Villa de Lujo en Campestre',
-    price: 4800000,
-    location: 'Campestre, Aguascalientes, AGS',
-    bedrooms: 4,
-    bathrooms: 3,
-    area: 350,
-    constructionArea: 280,
-    type: 'Villa',
-    image: 'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop',
-    images: [
-      'https://images.unsplash.com/photo-1613977257363-707ba9348227?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&h=600&fit=crop',
-      'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&h=600&fit=crop'
-    ],
-    description: 'Espectacular villa moderna con acabados de lujo en la exclusiva zona Campestre de Aguascalientes. Cuenta con amplios espacios, jardín privado, alberca y todas las comodidades para una vida de lujo.',
-    features: ['Jardín privado', 'Alberca', 'Garaje para 3 autos', 'Sistema de seguridad', 'Aire acondicionado', 'Cocina gourmet', 'Cuarto de servicio'],
+    title: 'Casa en Villas de Ntra. Sra. de la Asunción',
+    price: 2400000,
+    location: 'Villas de Ntra. Sra. de la Asunción 213 C. De Los Gallos Aguascalientes, Aguascalientes, AGS',
+    bedrooms: 3,
+    bathrooms: 2.5,
+    vehicles: 3,
+    area: 138,
+    constructionArea: 185,
+    type: 'Casa',
+    image: getImagesByFolder('casa1')[0], // Imagen principal
+    images: getImagesByFolder('casa1'),   // Todas las imágenes de esa propiedad
+    description: 'Te presento una propiedad amplia en el sector de encinos (cerca de villa teresa) EXCELENTE OPORTUNIDAD',
+    features: ['3 recamaras en planta alta','protecciones en ventanas','Jardín de gran tamaño', 'Sala de tv', 'Espacio para 3 autos', 'Sala comedor con piso laminado', 'Cocina integral con estufa y campana', 'Sistema de bomba y tinaco', 'Tanque estacionario','Medio baño planta baja'],
     agent: {
       name: 'Joana Paola Ramirez',
       phone: '+52 449 218 7657',
@@ -62,6 +67,7 @@ export const properties: Property[] = [
     location: 'Centro Histórico, Aguascalientes, AGS',
     bedrooms: 2,
     bathrooms: 2,
+    vehicles: 3,
     area: 120,
     constructionArea: 105,
     type: 'Departamento',
@@ -87,6 +93,7 @@ export const properties: Property[] = [
     location: 'Barrio San Marcos, Aguascalientes, AGS',
     bedrooms: 3,
     bathrooms: 2,
+    vehicles: 3,
     area: 250,
     constructionArea: 210,   
     type: 'Casa',
@@ -112,6 +119,7 @@ export const properties: Property[] = [
     location: 'Las Américas, Aguascalientes, AGS',
     bedrooms: 4,
     bathrooms: 4,
+    vehicles: 3,
     area: 380,
     constructionArea: 320,
     type: 'Villa',
@@ -137,6 +145,7 @@ export const properties: Property[] = [
     location: 'Bosques del Prado, Aguascalientes, AGS',
     bedrooms: 3,
     bathrooms: 2,
+    vehicles: 3,
     area: 220,
     constructionArea: 180,
     type: 'Casa',
@@ -158,17 +167,18 @@ export const properties: Property[] = [
   {
     id: '6',
   title: 'Casa en Reserva Bosque Sereno',
-  price: 2360000,
+  price: 2375000,
   location: 'Avenida Reserva Bosque Sereno 103 Reserva Bosque Sereno, 20326 Aguascalientes, Ags.',
   bedrooms: 3,
-  bathrooms: 3,
-  area: 120,
-  constructionArea: 140.5,
+  bathrooms: 2.5,
+  vehicles: 2,
+  area: 117,
+  constructionArea: 140,
   type: 'Casa',
-  image: imageList[0],
-  images: imageList.slice(0, 13),
-  description: 'Te presento una propiedad que realmente destaca por su funcionalidad y comodidad. Esta casa es perfecta para quienes buscan un espacio acogedor y práctico.',
-  features: ['Dos pisos', 'Estacionamiento 2 vehiculos', '3 Recamaras', '2/50 Baños', 'Patio', 'Zona lavado', 'Áreas verdes', 'Salon de eventos', 'Alberca climatizada', 'coto cerrado'],
+  image: getImagesByFolder('casa6')[0], // Imagen principal
+  images: getImagesByFolder('casa6'),   // Todas las imágenes de esa propiedad
+  description: 'Te presento una propiedad de dos plantas en coto con amenidades increibles como áreas verdes, alberca climatizada, juegos infantiles, cancha de futbol y basquetbol, asadores y salon de eventos',
+  features: ['Dos pisos', 'Estacionamiento 2 vehiculos', '3 Recamaras', '2/50 Baños', 'Cocina equipada', 'Zona lavado',  'coto cerrado'],
     agent: {
       name: 'Joana Paola Ramirez',
       phone: '+52 449 218 7657',

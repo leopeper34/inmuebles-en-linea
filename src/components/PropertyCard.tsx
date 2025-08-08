@@ -1,7 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Bed, Bath, Square, MapPin, Eye } from 'lucide-react';
+import { Bed, Bath, Square, MapPin, Eye, Car, Home } from 'lucide-react';
 import { Property } from '@/data/properties';
 import { Link } from 'react-router-dom';
 
@@ -51,21 +51,35 @@ const PropertyCard = ({ property }: PropertyCardProps) => {
             </div>
           </div>
 
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
-            <div className="flex items-center space-x-4">
-              {property.bedrooms > 0 && (
+          <div className="space-y-2">
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <div className="flex items-center space-x-3">
+                {property.bedrooms > 0 && (
+                  <div className="flex items-center">
+                    <Bed className="h-4 w-4 mr-1" />
+                    {property.bedrooms}
+                  </div>
+                )}
                 <div className="flex items-center">
-                  <Bed className="h-4 w-4 mr-1" />
-                  {property.bedrooms}
+                  <Bath className="h-4 w-4 mr-1" />
+                  {property.bathrooms}
                 </div>
-              )}
-              <div className="flex items-center">
-                <Bath className="h-4 w-4 mr-1" />
-                {property.bathrooms}
+                <div className="flex items-center">
+                  <Car className="h-4 w-4 mr-1" />
+                  {property.vehicles}
+                </div>
               </div>
-              <div className="flex items-center">
-                <Square className="h-4 w-4 mr-1" />
-                {property.area}m²
+            </div>
+            <div className="flex items-center justify-between text-sm text-muted-foreground">
+              <div className="flex items-center space-x-3">
+                <div className="flex items-center">
+                  <Square className="h-4 w-4 mr-1" />
+                  {property.area}m²
+                </div>
+                <div className="flex items-center">
+                  <Home className="h-4 w-4 mr-1" />
+                  {property.constructionArea}m²
+                </div>
               </div>
             </div>
           </div>

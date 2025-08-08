@@ -16,12 +16,7 @@ const About = () => {
 
   const team = [
 
-    {
-      name: 'Luis Zamarripa',
-      position: 'Agente Senior',
-      experience: '5 años de experiencia',
-      image: luis,
-    },
+
     {
       name: 'Paola Ramirez',
       position: 'Agente de calidad',

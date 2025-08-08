@@ -10,7 +10,7 @@ import { properties } from '@/data/properties';
 import { useToast } from '@/hooks/use-toast';
 import { 
   Bed, Bath, Square, MapPin, Phone, Mail, ArrowLeft, 
-  ChevronLeft, ChevronRight, Check, Heart, Share2, Calendar, Home
+  ChevronLeft, ChevronRight, Check, Heart, Share2, Calendar, Home, Car
 } from 'lucide-react';
 
 const PropertyDetail = () => {
@@ -201,6 +201,10 @@ const PropertyDetail = () => {
                       <div className="flex items-center">
                         <Bath className="h-4 w-4 mr-1" />
                         <span className="text-sm sm:text-base">{property.bathrooms} baños</span>
+                      </div>
+                      <div className="flex items-center">
+                        <Car className="h-4 w-4 mr-1" />
+                        <span className="text-sm sm:text-base">{property.vehicles} vehículos</span>
                       </div>
                       <div className="flex items-center">
                         <Square className="h-4 w-4 mr-1" />
